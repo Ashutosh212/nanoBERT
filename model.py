@@ -197,6 +197,7 @@ class BERTModel(nn.Module):
 
         # small MLP that transforms the [CLS] vector before NSP classification
         # (matches the "pooler" in the original BERT code)
+        # TODO: try removing this and feeding the [CLS] vector directly to the NSP head
         self.hidden = nn.Sequential(
             nn.Linear(num_hiddens, num_hiddens),   # dense layer on the [CLS] representation
             nn.Tanh(),                              # tanh keeps values in (-1, 1)
